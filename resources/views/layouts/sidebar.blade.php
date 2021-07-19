@@ -12,15 +12,23 @@
                 <a href="{{ url('/') }}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link has-dropdown" href="{{ route('product') }}" data-toggle="dropdown"><i
+                <a class="nav-link has-dropdown" href="{{ route('product.index') }}" data-toggle="dropdown"><i
                         class="fab fa-product-hunt"></i>
                     <span>Products</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{ route('product') }}"><span>Products Index</span></a></li>
-                    <li><a class="nav-link" href="{{ route('product') }}"><span>Create Products</span></a></li>
+                    <li><a class="nav-link" href="{{ route('product.index') }}"><span>Products Index</span></a></li>
+                    <li><a class="nav-link" href="{{ route('product.create') }}"><span>Create Products</span></a></li>
                 </ul>
             </li>
-            <li><a class="nav-link" href="#"><i class="fas fa-th-large"></i> <span>Category</span></a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link has-dropdown" href="{{ route('category.index') }}" data-toggle="dropdown"><i
+                        class="fas fa-th-large"></i>
+                    <span>Category</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('category.index') }}"><span>Category Index</span></a></li>
+                    <li><a class="nav-link" href="{{ route('category.create') }}"><span>Create Category</span></a></li>
+                </ul>
+            </li>
         </ul>
     </aside>
 </div>

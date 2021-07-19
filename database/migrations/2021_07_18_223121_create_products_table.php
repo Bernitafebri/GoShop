@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('image');
             $table->bigInteger('categories_id')->unsigned();
-            $table->integer('price');
+            $table->float('price');
             $table->text('description');
             $table->enum('status', ['ready','sold'])->default('ready');
             $table->enum('show', ['ya','tidak'])->default('ya');

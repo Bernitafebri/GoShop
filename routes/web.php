@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('Dashboard');
 });
 
-Route::get('/product', [ProductController::class, 'index'])->name('product');
+Route::resource('product', 'ProductController');
+Route::resource('category', 'CategoryController');
