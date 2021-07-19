@@ -20,13 +20,22 @@
                 <a href="" class="nav-link "><i class="fas fa-tags"></i><span>Discount</span></a>
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link "><i class="fas fa-archive"></i><span>Order</span></a>
+                <a href="" class="nav-link "><i class="fas fa-cc"></i><span>Order</span></a>
             </li>
             <li class="nav-item">
                 <a href="" class="nav-link "><i class="fas fa-money-bill"></i><span>Transaksi</span></a>
             </li>
             <li class="nav-item">
                 <a href="" class="nav-link "><i class="fas fa-shopping-bag"></i><span>Penjualan</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link "><i class="fas fa-shopping-cart"></i><span>Pembelian</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link "><i class="fas fa-book"></i><span>Laporan</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link "><i class="fas fa-users"></i><span>User</span></a>
             </li>
            
         </ul>
