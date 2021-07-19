@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\TransaksiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +23,11 @@ Route::get('/', function () {
 
 Route::resource('product', 'ProductController');
 Route::resource('category', 'CategoryController');
+
+Route::get('/discount', 'DiscountController@index');
+
+Route::get('/order', 'OrderController@index');
+
+Route::get('/penjualan', 'PenjualanController@index');
+
+Route::get('/transaksi', 'TransaksiController@index');

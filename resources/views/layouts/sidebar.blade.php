@@ -2,6 +2,8 @@
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
             <a href="#">Goshop</a>
+
+            <a href="index.html">GOShop</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">GS</a>
@@ -29,6 +31,20 @@
                     <li><a class="nav-link" href="{{ route('category.create') }}"><span>Create Category</span></a></li>
                 </ul>
             </li>
+
+            <li class="nav-item">
+                <a href="" class="nav-link "><i class="fas fa-tags"></i><span>Discount</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link "><i class="fas fa-archive"></i><span>Order</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link "><i class="fas fa-money-bill"></i><span>Transaksi</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link "><i class="fas fa-shopping-bag"></i><span>Penjualan</span></a>
+            </li>
+           
         </ul>
     </aside>
 </div>
