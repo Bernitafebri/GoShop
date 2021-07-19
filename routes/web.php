@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\OrderController;
@@ -17,8 +18,11 @@ use App\Http\Controllers\TransaksiController;
 */
 
 Route::get('/', function () {
-    return view('hello');
+    return view('Dashboard');
 });
+
+Route::resource('product', 'ProductController');
+Route::resource('category', 'CategoryController');
 
 Route::get('/discount', 'DiscountController@index');
 
@@ -27,4 +31,3 @@ Route::get('/order', 'OrderController@index');
 Route::get('/penjualan', 'PenjualanController@index');
 
 Route::get('/transaksi', 'TransaksiController@index');
-
