@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\TransaksiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('order.add');
+    return view('hello');
 });
+
+Route::get('/discount', 'DiscountController@index');
+
+Route::get('/order', 'OrderController@index');
+
+Route::get('/penjualan', 'PenjualanController@index');
+
+Route::get('/transaksi', 'TransaksiController@index');
+
