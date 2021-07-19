@@ -13,7 +13,7 @@ class DiscountController extends Controller
      */
     public function index()
     {
-        //
+        return view ('discount.index');
     }
 
     /**

@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\TransaksiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,13 +17,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('order.add');
-});
-
-
-// Bagian Pembelian
-
-// Bagian Lapoan
-
-// Bagian User
