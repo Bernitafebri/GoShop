@@ -15,6 +15,20 @@
                     <li class="active"><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
                 </ul>
             </li>
+
+            <li class="nav-item">
+                <a href="" class="nav-link "><i class="fas fa-tags"></i><span>Discount</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link "><i class="fas fa-archive"></i><span>Order</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link "><i class="fas fa-money-bill"></i><span>Transaksi</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link "><i class="fas fa-shopping-bag"></i><span>Penjualan</span></a>
+            </li>
+           
         </ul>
     </aside>
 </div>
