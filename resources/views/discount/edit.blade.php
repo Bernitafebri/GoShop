@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','Discount')
 
-@section('page', 'Add Discount')
+@section('page', 'Edit Discount')
 @section('content')
 
 <div class="section-body">
@@ -14,24 +14,21 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>ADD DISCOUNT</h4>
+                    <h4>EDIT DISCOUNT</h4>
                 </div>
-                <form action="{{ url('/discount') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('/discount/'.$discount->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PATCH')
                     <div class="card-body">
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Select Product</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <select name="product_id"
-                                        class="form-control selectric @error('name') is-invalid @enderror">
-                                        @error('product_id')
-                                        <div class="invalid-feedback p-2 shadow-sm rounded mt-2">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
+                                    <select name="product_id" class="form-control selectric">
                                         <option value="">--Pilih--</option>
                                         @foreach ($products as $data)
-                                        <option value="{{ $data->id }}">{{$data->name}}</option>
+                                        <option value="{{ $data->id }}"
+                                        {{(($discount->product_id==$data->id )? 'selected':'')}}>
+                                        {{ $data->name }}</option>
                                         @endforeach
                                     </select>
                             </div>
@@ -39,12 +36,7 @@
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Value (1-100)</label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="number" name="value" class="form-control @error('value') is-invalid @enderror">
-                                    @error('value')
-                                    <div class="invalid-feedback p-2 shadow-sm rounded mt-2">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
+                                <input type="number" name="value" class="form-control" value="{{ $discount->value }}">
                             </div>
                         </div>
                         <div class="form-group row mb-4">

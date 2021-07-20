@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class discount extends Model
 {
-    use HasFactory;
+    // use HasFactory;
     protected $fillable = ['product_id','value'];
+
+    public function product(){
+        return $this->belongsTo(product::class);
+    }
 }

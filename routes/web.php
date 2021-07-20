@@ -25,6 +25,11 @@ Route::resource('product', 'ProductController');
 Route::resource('category', 'CategoryController');
 
 Route::get('/discount', 'DiscountController@index');
+Route::get('/discount/create', 'DiscountController@create');
+Route::post('/discount', 'DiscountController@store');
+Route::get('/discount/{discount}/edit', 'DiscountController@edit');
+Route::patch('/discount/{discount}', 'DiscountController@update');
+Route::delete('/discount/{id}', 'DiscountController@delete');
 
 Route::get('/order', 'OrderController@index');
 

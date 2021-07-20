@@ -1,84 +1,71 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\discount;
+use App\product;
+use App\Http\Controllers\DB;
 use Illuminate\Http\Request;
 
 class DiscountController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view ('discount.index');
+        $discounts=discount::with('product')->get();
+        return view ('discount.index', compact('discounts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $products=product::all();
+        return view ('discount.add', compact('products'));
+        // return view ('discount.add');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'product_id' => 'required|integer',
+            'value' => 'required|integer',
+        ]);
+        $discount = discount::create([
+            'product_id' => $request->product_id,
+            'value' => $request->value,
+        ]);
+        
+            return redirect('/discount')->with(['status' => 'Data Berhasil Disimpan!']);
+
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    
+    public function edit(discount $discount)
     {
-        //
+        $products=product::get();
+        return view('discount.edit', compact('discount'))->with('products',$products);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    
+    public function update(Request $request, discount $discount)
     {
-        //
+        $this->validate($request, [
+            'product_id' => 'required|integer',
+            'value' => 'required|integer',
+        ]);
+
+        discount::where('id', $discount->id)->update([
+            'product_id' => $request->product_id,
+            'value' => $request->value,
+        ]);
+        return redirect('/discount')->with('status', 'Data berhasil diubah!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        // DB::table('discounts')->where('id',$id)->delete();
+        $data = discount::findOrFail($id);
+        $data->delete();
+        return redirect('/discount')->with('status', 'Data berhasil dihapus!');
     }
 }

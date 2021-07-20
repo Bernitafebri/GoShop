@@ -33,16 +33,16 @@
             </li>
 
             <li class="nav-item">
-                <a href="" class="nav-link "><i class="fas fa-tags"></i><span>Discount</span></a>
+                <a href="{{ url('/discount') }}" class="nav-link "><i class="fas fa-tags"></i><span>Discount</span></a>
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link "><i class="fas fa-archive"></i><span>Order</span></a>
+                <a href="{{ url('/order') }}" class="nav-link "><i class="fas fa-archive"></i><span>Order</span></a>
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link "><i class="fas fa-money-bill"></i><span>Transaksi</span></a>
+                <a href="{{ url('/transaksi') }}" class="nav-link "><i class="fas fa-money-bill"></i><span>Transaksi</span></a>
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link "><i class="fas fa-shopping-bag"></i><span>Penjualan</span></a>
+                <a href="{{ url('/penjualan') }}" class="nav-link "><i class="fas fa-shopping-bag"></i><span>Penjualan</span></a>
             </li>
            
         </ul>
