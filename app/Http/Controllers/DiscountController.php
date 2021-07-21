@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\discount;
 use App\product;
-use App\Http\Controllers\DB;
 use Illuminate\Http\Request;
 
 class DiscountController extends Controller

@@ -36,3 +36,8 @@ Route::get('/order', 'OrderController@index');
 Route::get('/penjualan', 'PenjualanController@index');
 
 Route::get('/transaksi', 'TransaksiController@index');
+Route::get('/transaksi/create', 'TransaksiController@create');
+Route::post('/transaksi', 'TransaksiController@store');
+Route::get('/transaksi/{transaksi}/edit', 'TransaksiController@edit');
+Route::patch('/transaksi/{transaksi}', 'TransaksiController@update');
+Route::delete('/transaksi/{id}', 'TransaksiController@delete');

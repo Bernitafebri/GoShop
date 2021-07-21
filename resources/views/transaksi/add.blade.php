@@ -1,129 +1,74 @@
 @extends('layouts.app')
-@section('title','Order')
+@section('title','Transaksi')
 
-@section('page', 'Add Order')
+@section('page', 'Add Transaksi')
 @section('content')
 
 <div class="section-body">
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
     <div class="row">
-        <div class="col-12 col-md-6 col-lg-12">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>ADD ORDER</h4>
+                    <h4>Add Transaksi</h4>
                 </div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label>Text</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Select</label>
-                    <select class="form-control">
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Select Multiple</label>
-                    <select class="form-control" multiple="" data-height="100%">
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                        <option>Option 3</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Textarea</label>
-                    <textarea class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <label class="d-block">Checkbox</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                            Checkbox 1
-                        </label>
+                <form action="{{ url('/transaksi') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="card-body">
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Select Order ID</label>
+                                <div class="col-sm-12 col-md-7">
+                                    <select name="order_id"
+                                        class="form-control selectric @error('name') is-invalid @enderror">
+                                        @error('order_id')
+                                        <div class="invalid-feedback p-2 shadow-sm rounded mt-2">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                        <option value="">--Pilih--</option>
+                                        @foreach ($orders as $data)
+                                        <option value="{{ $data->id }}">{{$data->id}}</option>
+                                        @endforeach
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">No. Invoice</label>
+                            <div class="col-sm-12 col-md-7">
+                                <input type="number" name="no_invoice" class="form-control @error('no_invoice') is-invalid @enderror">
+                                    @error('no_invoice')
+                                    <div class="invalid-feedback p-2 shadow-sm rounded mt-2">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Bukti Transfer</label>
+                        <div class="col-sm-12 col-md-7">
+                            <input type="file" name="bukti_tf" class="form-control @error('bukti_tf') is-invalid @enderror"
+                                id="formFileMultiple">
+                                @error('bukti_tf')
+                                <div class="invalid-feedback shadow-sm rounded mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                            <div class="col-sm-12 col-md-7 text-md-right">
+                                <a href="{{ url('/transaksi') }}" class="btn btn-danger">Cancel</a>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="defaultCheck3">
-                        <label class="form-check-label" for="defaultCheck3">
-                            Checkbox 2
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Color</label>
-                    <input type="color" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Date</label>
-                    <input type="date" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Datetime Local</label>
-                    <input type="datetime-local" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>File</label>
-                    <input type="file" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Month</label>
-                    <input type="month" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label class="d-block">Radio</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" checked>
-                        <label class="form-check-label" for="exampleRadios1">
-                            Radio 1
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" checked>
-                        <label class="form-check-label" for="exampleRadios2">
-                            Radio 2
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Range</label>
-                    <input type="range" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Search</label>
-                    <input type="search" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Tel</label>
-                    <input type="tel" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Time</label>
-                    <input type="time" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Url</label>
-                    <input type="url" class="form-control">
-                </div>
-                <div class="form-group mb-0">
-                    <label>Week</label>
-                    <input type="week" class="form-control">
-                </div>
-            </div>
-            <div class="card-footer text-right">
-                <button class="btn btn-primary mr-1" type="submit">Submit</button>
-                <button class="btn btn-secondary" type="reset">Reset</button>
-            </div>
+                </form>
         </div>
     </div>
 </div>

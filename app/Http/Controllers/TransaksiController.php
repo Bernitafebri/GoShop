@@ -1,82 +1,69 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\transaksi;
+use App\order;
+use App\product;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
-        return view ('transaksi.index');
+        $transaksis=transaksi::with('order')->get();
+        return view ('transaksi.index', compact('transaksis'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
-        //
+        $orders=order::all();
+        $products=product::all();
+        return view ('transaksi.add', compact('orders','products'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'order_id' => 'required',
+            'no_invoice' => 'required',
+            'bukti_tf' =>'required|image|mimes:png,jpg,jpeg',
+        ]);
+        //image upload
+        $bukti_tf = $request->file('bukti_tf');
+        $buktiName = date('YmdHis').'.'.$bukti_tf->getClientOriginalExtension();
+        $destination = storage_path('app/public/buktiTF');
+        $bukti_tf->move($destination, $buktiName);
+
+        $transaksi = transaksi::create([
+            'order_id'          => $request->order_id,
+            'no_invoice'        => $request->no_invoice,
+            'bukti_tf'          => $buktiName,
+        ]);
+        return redirect('/transaksi')->with(['status' => 'Data Berhasil Disimpan!']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
         //

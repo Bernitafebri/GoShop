@@ -35,15 +35,17 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($orders as $order)
                         <tr>
-                            <td>No</td>
-                            <td>Name User</td>
-                            <td>Nama Product</td>
-                            <td>Jumlah Product</td>
-                            <td>Total Price</td>
-                            <td>Status</td>
-                            <td>Desc</td>
-                            <td>Image</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $order->user->name }}</td>
+                            <td>{{ $order->product->name }}</td>
+                            <td>{{ $order->quantity }}</td>
+                            <td>{{ $order->jml_harga }}</td>
+                            <td>{{ $order->status }}</td>
+                            <td>{{ $order->desc_order }}</td>
+                            <td width="100px"><img src="{{ asset('storage/products/'.$order->product->image) }}" width="100px"
+                                            class="w-48 rounded-md"></td>
                             <td style="text-align: center">
                                 <a href="#" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
                                 <form action="#" method="post" onsubmit="return confirm('Yakin hapus data?')" class="d-inline">
@@ -56,6 +58,7 @@
                                 
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                   </table>
                 </div>
