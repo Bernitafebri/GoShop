@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransaksiController;
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +37,16 @@ Route::delete('/discount/{id}', 'DiscountController@delete');
 Route::get('/order', 'OrderController@index');
 
 Route::get('/penjualan', 'PenjualanController@index');
+
+//Bagian Pembelian
+Route::resource('pembelian', 'PembelianController');
+
+// Bagian Laporan
+Route::resource('laporan', 'LaporanController');
+
+// Bagian User
+Route::resource('user', 'UserController');
+
 
 Route::get('/transaksi', 'TransaksiController@index');
 Route::get('/transaksi/create', 'TransaksiController@create');
